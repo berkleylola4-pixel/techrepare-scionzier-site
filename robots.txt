@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /pages/
+
+Sitemap: https://www.techrepare-scionzier.fr/sitemap.xml
