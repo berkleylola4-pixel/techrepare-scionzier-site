@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /tmp/
-Disallow: /pages/
+Disallow: /404.html
+Disallow: /pages/plan-du-site.html
 
 Sitemap: https://www.techrepare-scionzier.fr/sitemap.xml
