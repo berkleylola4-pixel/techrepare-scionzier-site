@@ -59,15 +59,18 @@ Le formulaire utilise **Formspree**. Remplacer `FORM_ID` dans `index.html` par v
 
 ## Images
 
-Remplacer les images Unsplash dans le dossier `images/` par des photos réelles de l'atelier.
+Les images utilisées sur le site proviennent de **Pexels** et sont libres de droits sous licence Pexels. Elles sont fournies à titre d'illustration.
 
-| Fichier | Usage |
-|---------|-------|
-| hero.jpg | Image principale du hero |
-| smartphone.jpg | Service smartphone |
-| pc-mac.jpg | Service PC/Mac |
-| tablette.jpg | Service tablette |
-| favicon.svg | Favicon de la marque |
+| Fichier | Usage | Source Pexels | Photographe |
+|---------|-------|---------------|-------------|
+| hero.jpg | Image principale du hero | [Photo 16061070](https://www.pexels.com/photo/man-in-shirt-at-workshop-16061070/) | Ali Haki |
+| hero-og.jpg | Image Open Graph / réseaux sociaux | [Photo 16061070](https://www.pexels.com/photo/man-in-shirt-at-workshop-16061070/) | Ali Haki |
+| smartphone.jpg | Service smartphone | [Photo 6755075](https://www.pexels.com/photo/a-hand-fixing-an-electronic-device-using-screwdriver-6755075/) | Tima Miroshnichenko |
+| pc-mac.jpg | Service PC/Mac | [Photo 12741856](https://www.pexels.com/photo/man-typing-on-keyboard-in-laboratory-12741856/) | Quang Nguyen Vinh |
+| tablette.jpg | Service tablette | [Photo 11715244](https://www.pexels.com/photo/macbook-in-a-repair-shop-11715244/) | Miguel Galaz |
+| favicon.svg | Favicon de la marque | Création interne | TechRépare |
+
+> **Note :** pour un site définitif, remplacez progressivement ces images par des photos réelles de votre atelier et de vos interventions. Cela renforcera l'authenticité, la confiance et le SEO local.
 
 ## Pages à compléter
 
