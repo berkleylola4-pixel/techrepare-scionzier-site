@@ -137,7 +137,7 @@
             })
                 .then(function (response) {
                     if (response.ok) {
-                        showStatus(statusEl, 'success', '✅ Merci ! Votre demande a bien été envoyée. Nous vous recontactons sous 2 heures avec votre devis gratuit.');
+                        showStatus(statusEl, 'success', '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Merci ! Votre demande a bien été envoyée. Nous vous recontactons sous 2 heures avec votre devis gratuit.');
                         form.reset();
                     } else {
                         return response.json().then(function (data) {
@@ -146,7 +146,7 @@
                     }
                 })
                 .catch(function (error) {
-                    showStatus(statusEl, 'error', '❌ Une erreur est survenue : ' + error.message + '. Veuillez nous appeler directement.');
+                    showStatus(statusEl, 'error', '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Une erreur est survenue : ' + error.message + '. Veuillez nous appeler directement.');
                 })
                 .finally(function () {
                     if (submitBtn) {
