@@ -63,8 +63,8 @@ Les images utilisées sur le site proviennent de **Pexels** et sont libres de dr
 
 | Fichier | Usage | Source Pexels | Photographe |
 |---------|-------|---------------|-------------|
-| hero.jpg | Image principale du hero | [Photo 16061070](https://www.pexels.com/photo/man-in-shirt-at-workshop-16061070/) | Ali Haki |
-| hero-og.jpg | Image Open Graph / réseaux sociaux | [Photo 16061070](https://www.pexels.com/photo/man-in-shirt-at-workshop-16061070/) | Ali Haki |
+| hero.jpg | Image principale du hero | [Gemini Generated Image](https://i.postimg.cc/m2WYvtb5/Gemini-Generated-Image-6fsi516fsi516fsi.png) | Création originale |
+| hero-og.jpg | Image Open Graph / réseaux sociaux | [Gemini Generated Image](https://i.postimg.cc/m2WYvtb5/Gemini-Generated-Image-6fsi516fsi516fsi.png) | Création originale |
 | smartphone.jpg | Service smartphone | [Photo 6755075](https://www.pexels.com/photo/a-hand-fixing-an-electronic-device-using-screwdriver-6755075/) | Tima Miroshnichenko |
 | pc-mac.jpg | Service PC/Mac | [Photo 12741856](https://www.pexels.com/photo/man-typing-on-keyboard-in-laboratory-12741856/) | Quang Nguyen Vinh |
 | tablette.jpg | Service tablette | [Photo 11715244](https://www.pexels.com/photo/macbook-in-a-repair-shop-11715244/) | Miguel Galaz |
