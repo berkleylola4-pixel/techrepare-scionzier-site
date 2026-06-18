@@ -1,6 +1,6 @@
 /**
  * TechRépare Scionzier - Scripts principaux
- * Version: 1.0.0
+ * Version: 2.0.0
  */
 
 (function () {
@@ -10,23 +10,94 @@
         formspreeEndpoint: 'https://formspree.io/f/FORM_ID'
     };
 
-    // FAQ Accordion
+    // LOADER
+    function initLoader() {
+        const loader = document.getElementById('loader');
+        if (!loader) return;
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                loader.classList.add('hidden');
+            }, 1800);
+        });
+    }
+
+    // NAV SCROLL
+    function initNavScroll() {
+        const nav = document.getElementById('mainNav');
+        if (!nav) return;
+        window.addEventListener('scroll', function () {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+    }
+
+    // MOBILE MENU
+    function initMobileMenu() {
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (!hamburger || !mobileMenu) return;
+
+        window.toggleMenu = function () {
+            const isOpen = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        };
+
+        window.closeMenu = function () {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+        };
+    }
+
+    // LIGHTBOX
+    function initLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        if (!lightbox || !lbImg) return;
+
+        window.openLightbox = function (src) {
+            lbImg.src = src;
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeLightbox = function () {
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            lbImg.src = '';
+        };
+
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+                closeLightbox();
+            }
+        });
+    }
+
+    // FAQ ACCORDION
     function initFAQ() {
         const questions = document.querySelectorAll('.faq-question');
+        if (!questions.length) return;
 
         questions.forEach(function (question) {
             question.addEventListener('click', function () {
                 const item = question.closest('.faq-item');
                 const isActive = item.classList.contains('active');
 
-                // Fermer tous les autres
                 document.querySelectorAll('.faq-item').forEach(function (i) {
                     i.classList.remove('active');
                     const btn = i.querySelector('.faq-question');
                     if (btn) btn.setAttribute('aria-expanded', 'false');
                 });
 
-                // Ouvrir celui-ci si pas déjà actif
                 if (!isActive) {
                     item.classList.add('active');
                     question.setAttribute('aria-expanded', 'true');
@@ -35,56 +106,12 @@
         });
     }
 
-    // Header sticky effect
-    function initHeaderScroll() {
-        const header = document.querySelector('header');
-        if (!header) return;
-
-        let ticking = false;
-
-        window.addEventListener('scroll', function () {
-            if (!ticking) {
-                window.requestAnimationFrame(function () {
-                    if (window.pageYOffset > 100) {
-                        header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.1)';
-                    } else {
-                        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-
-    // Mobile menu
-    function initMobileMenu() {
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        const mobileNav = document.querySelector('.mobile-nav');
-
-        if (!toggle || !mobileNav) return;
-
-        toggle.addEventListener('click', function () {
-            const isOpen = mobileNav.classList.toggle('is-open');
-            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
-
-        // Fermer le menu au clic sur un lien
-        mobileNav.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                mobileNav.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-    }
-
-    // Smooth scroll for anchor links
+    // SMOOTH SCROLL
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href === '#' || href.length <= 1) return;
-
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
@@ -96,35 +123,32 @@
         });
     }
 
-    // Form submission
+    // FORM SUBMISSION
     function initContactForm() {
-        const form = document.querySelector('.contact-form');
+        const form = document.querySelector('.contact-form-el');
         if (!form) return;
 
-        // Si Formspree n'est pas configuré, on désactive l'envoi AJAX
-        if (CONFIG.formspreeEndpoint.indexOf('FORM_ID') > -1) {
-            console.warn('Formspree FORM_ID non configuré. Le formulaire affichera un message local.');
-        }
-
-        const statusEl = document.createElement('div');
-        statusEl.className = 'form-status';
-        statusEl.setAttribute('role', 'status');
-        statusEl.setAttribute('aria-live', 'polite');
-        form.insertBefore(statusEl, form.firstChild);
+        const statusEl = form.querySelector('.form-status');
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const submitBtn = form.querySelector('.form-submit');
-            const originalText = submitBtn ? submitBtn.textContent : '';
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn ? submitBtn.innerHTML : '';
 
             if (CONFIG.formspreeEndpoint.indexOf('FORM_ID') > -1) {
-                showStatus(statusEl, 'success', 'Merci ! Votre demande a bien été envoyée. Nous vous recontactons sous 2 heures.');
+                if (statusEl) {
+                    statusEl.className = 'form-status success';
+                    statusEl.textContent = 'Merci ! Votre demande a bien été envoyée. Nous vous recontactons sous 2 heures.';
+                }
                 form.reset();
                 return;
             }
 
-            showStatus(statusEl, 'loading', 'Envoi en cours...');
+            if (statusEl) {
+                statusEl.className = 'form-status loading';
+                statusEl.textContent = 'Envoi en cours...';
+            }
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Envoi en cours...';
@@ -137,7 +161,10 @@
             })
                 .then(function (response) {
                     if (response.ok) {
-                        showStatus(statusEl, 'success', '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Merci ! Votre demande a bien été envoyée. Nous vous recontactons sous 2 heures avec votre devis gratuit.');
+                        if (statusEl) {
+                            statusEl.className = 'form-status success';
+                            statusEl.textContent = 'Merci ! Votre demande a bien été envoyée. Nous vous recontactons sous 2 heures.';
+                        }
                         form.reset();
                     } else {
                         return response.json().then(function (data) {
@@ -146,69 +173,71 @@
                     }
                 })
                 .catch(function (error) {
-                    showStatus(statusEl, 'error', '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Une erreur est survenue : ' + error.message + '. Veuillez nous appeler directement.');
+                    if (statusEl) {
+                        statusEl.className = 'form-status error';
+                        statusEl.textContent = 'Une erreur est survenue : ' + error.message + '. Veuillez nous appeler directement.';
+                    }
                 })
                 .finally(function () {
                     if (submitBtn) {
                         submitBtn.disabled = false;
-                        submitBtn.textContent = originalText;
+                        submitBtn.innerHTML = originalText;
                     }
                 });
         });
     }
 
-    function showStatus(element, type, message) {
-        element.className = 'form-status ' + type;
-        element.textContent = message;
-    }
+    // REVEAL ON SCROLL
+    function initRevealAnimations() {
+        const reveals = document.querySelectorAll('.reveal, .reveal-l, .reveal-r');
+        if (!reveals.length) return;
 
-    // Scroll animations
-    function initScrollAnimations() {
-        const animatedElements = document.querySelectorAll('.service-card, .why-card, .testimonial, .process-step');
-        if (!animatedElements.length) return;
-
-        // Vérifier si l'utilisateur préfère réduire les animations
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        animatedElements.forEach(function (el) {
-            if (prefersReducedMotion) {
+        if (prefersReducedMotion) {
+            reveals.forEach(function (el) {
                 el.style.opacity = '1';
                 el.style.transform = 'none';
-                return;
-            }
-
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-
-        if (prefersReducedMotion) return;
+            });
+            return;
+        }
 
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('on');
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-        animatedElements.forEach(function (el) {
+        reveals.forEach(function (el) {
             observer.observe(el);
+        });
+    }
+
+    // PARALLAX HERO
+    function initParallaxHero() {
+        const heroBg = document.getElementById('heroBg');
+        if (!heroBg) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        window.addEventListener('scroll', function () {
+            heroBg.style.transform = 'translateY(' + (window.scrollY * 0.35) + 'px) scale(1)';
         });
     }
 
     // Initialisation
     document.addEventListener('DOMContentLoaded', function () {
-        initFAQ();
-        initHeaderScroll();
+        initLoader();
+        initNavScroll();
         initMobileMenu();
+        initLightbox();
+        initFAQ();
         initSmoothScroll();
         initContactForm();
-        initScrollAnimations();
+        initRevealAnimations();
+        initParallaxHero();
     });
 })();

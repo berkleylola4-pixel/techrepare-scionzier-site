@@ -3,53 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO META TAGS -->
     <title>Page non trouvée | TechRépare Scionzier</title>
     <meta name="description" content="La page demandée n'existe pas. Retrouvez nos services de réparation smartphone, PC et tablette à Scionzier.">
     <meta name="robots" content="noindex, follow">
+    <meta name="author" content="TechRépare Scionzier">
+    <link rel="canonical" href="https://www.techrepare-scionzier.fr/404.html">
+    <meta name="language" content="fr">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="geo.region" content="FR-74">
+    <meta name="geo.placename" content="Scionzier">
+    <meta name="geo.position" content="46.0601;6.5527">
+    <meta name="ICBM" content="46.0601, 6.5527">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Page non trouvée | TechRépare Scionzier">
+    <meta property="og:description" content="La page demandée n'existe pas. Retrouvez nos services de réparation smartphone, PC et tablette à Scionzier.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.techrepare-scionzier.fr/404.html">
+    <meta property="og:image" content="https://www.techrepare-scionzier.fr/images/hero-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="TechRépare Scionzier">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Page non trouvée | TechRépare Scionzier">
+    <meta name="twitter:description" content="La page demandée n'existe pas. Retrouvez nos services de réparation smartphone, PC et tablette à Scionzier.">
+    <meta name="twitter:image" content="https://www.techrepare-scionzier.fr/images/hero-og.jpg">
+
+    <!-- FAVICON -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="images/favicon.svg">
+
+    <!-- PRECONNECT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://formspree.io">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- STYLES -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- SCHEMA.ORG -->
+
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav class="nav" aria-label="Navigation">
-                <a href="index.html" class="logo" aria-label="TechRépare Scionzier">
-                    <div class="logo-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 3 3.4 5.6c-1.1 2.5-.7 5.4 1.3 7.4 1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4zM5.8 10c-1.1-1.1-1.1-2.9 0-4l2-2c1.1-1.1 2.9-1.1 4 0 .5.5.8 1.2.8 1.9 0 .7-.3 1.4-.8 1.9-1.1 1.1-2.9 1.1-4 0z"/></svg></div>
-                    <div class="logo-text">Tech<span>Répare</span></div>
-                </a>
-            </nav>
-        </div>
-    </header>
 
-    <main class="legal-page" id="main-content">
-        <div class="container">
-            <div class="legal-content" style="text-align:center;">
-                <div style="font-size:6rem;font-weight:900;color:var(--primary);margin-bottom:20px;">404</div>
-                <h1>Page non trouvée</h1>
-                <p style="font-size:1.15rem;color:var(--gray);margin-bottom:30px;">
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">TechRépare</div>
+        <div class="loader-sub">Atelier de réparation · Haute-Savoie</div>
+        <div class="loader-bar"></div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Aperçu de l'image" aria-hidden="true">
+        <button class="lb-close" onclick="closeLightbox()" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;fill:currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+        <img id="lbImg" src="" alt="">
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-overlay" id="mobileMenu" aria-hidden="true">
+        <a href="index.html#atelier" onclick="closeMenu()">L'atelier</a>
+        <a href="index.html#services" onclick="closeMenu()">Services</a>
+        <a href="index.html#process" onclick="closeMenu()">Process</a>
+        <a href="index.html#zones" onclick="closeMenu()">Zones</a>
+        <a href="index.html#avis" onclick="closeMenu()">Avis</a>
+        <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+        <a href="tel:+33[A REMPLIR]" onclick="closeMenu()" style="color:var(--or)">Appeler <svg viewBox="0 0 24 24" aria-hidden="true" style="width:1em;height:1em;fill:currentColor;vertical-align:middle"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a>
+    </div>
+
+    <!-- NAV -->
+    <nav id="mainNav">
+        <a href="index.html" class="logo" aria-label="TechRépare Scionzier - Accueil">
+            <span class="logo-main">Tech<span>Répare</span></span>
+            <span class="logo-sub">Scionzier · Haute-Savoie</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#atelier">L'atelier</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#process">Process</a></li>
+            <li><a href="index.html#zones">Zones</a></li>
+            <li><a href="index.html#avis">Avis</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="tel:+33[A REMPLIR]" class="nav-cta">Appeler</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main id="main-content">
+
+<section class="legal-page" aria-labelledby="page-title">
+        <div class="legal-inner">
+            <div class="legal-content" style="text-align:center;padding:80px 50px;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:6rem;font-weight:300;color:var(--bleu);margin-bottom:20px;">404</div>
+                <h1 id="page-title" style="margin-bottom:20px;">Page non trouvée</h1>
+                <p style="font-size:1.15rem;color:var(--gris);margin-bottom:30px;">
                     La page que vous recherchez n'existe pas ou a été déplacée.
                 </p>
-                <p style="margin-bottom:30px;">
+                <p style="margin-bottom:30px;color:var(--gris);">
                     Retrouvez rapidement ce que vous cherchez :
                 </p>
-
                 <div style="display:flex;flex-wrap:wrap;gap:15px;justify-content:center;">
-                    <a href="index.html" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Retour à l'accueil</a>
-                    <a href="pages/services/" class="btn btn-secondary">Nos services</a>
-                    <a href="pages/tarifs.html" class="btn btn-secondary">Tarifs</a>
-                    <a href="index.html#contact" class="btn btn-secondary">Contact</a>
+                    <a href="index.html" class="btn-gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Retour à l'accueil</a>
+                    <a href="pages/services/" class="btn-ghost">Nos services</a>
+                    <a href="pages/tarifs.html" class="btn-ghost">Tarifs</a>
+                    <a href="index.html#contact" class="btn-ghost">Contact</a>
                 </div>
             </div>
         </div>
+    </section>
+
     </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="container">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" aria-label="TechRépare Scionzier">
+                        <span class="logo-main">Tech<span>Répare</span></span>
+                        <span class="logo-sub">Scionzier · Haute-Savoie</span>
+                    </a>
+                    <p>Votre expert en réparation de smartphones, ordinateurs et tablettes à Scionzier (74950). Intervention rapide, devis gratuit, garantie 6 mois. Au service de la Vallée de l'Arve.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="index.html#atelier">L'atelier</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#process">Process</a>
+                    <a href="index.html#zones">Zones</a>
+                    <a href="index.html#avis">Avis</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="pages/services/reparation-iphone-scionzier.html">Réparation iPhone</a>
+                    <a href="pages/services/reparation-samsung-scionzier.html">Réparation Samsung</a>
+                    <a href="pages/services/reparation-pc-mac-scionzier.html">Dépannage PC & Mac</a>
+                    <a href="pages/services/reparation-tablette-scionzier.html">Réparation iPad / Tablette</a>
+                    <a href="pages/tarifs.html">Tarifs</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Informations</h4>
+                    <a href="pages/mentions-legales.html">Mentions légales</a>
+                    <a href="pages/politique-confidentialite.html">Politique de confidentialité</a>
+                    <a href="pages/cgv.html">Conditions générales de vente</a>
+                    <a href="pages/plan-du-site.html">Plan du site</a>
+                </div>
+            </div>
             <div class="footer-bottom">
-                <p>© 2026 TechRépare Scionzier. <a href="index.html">Retour à l'accueil</a>.</p>
+                <div class="footer-copy">© 2026 TechRépare Scionzier — Tous droits réservés · Fait avec soin en Haute-Savoie</div>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/techrepare.scionzier" class="social-btn" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2.5H14C11.5 2.5 9.5 4.5 9.5 7V10H6.5V14H9.5V21.5H13.5V14H16.5L17.5 10H13.5V7.5C13.5 6.5 14 5.5 15.5 5.5H17.5V2.5H17Z"/></svg></a>
+                    <a href="https://www.instagram.com/techrepare_scionzier" class="social-btn" title="Instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.6 4 4 5.6 4 7.6V16.4C4 18.4 5.6 20 7.6 20H16.4C18.4 20 20 18.4 20 16.4V7.6C20 5.6 18.4 4 16.4 4H7.6ZM17.5 5.5C17.5 5.5 18.5 5.5 18.5 6.5C18.5 7.5 17.5 7.5 17.5 7.5C16.5 7.5 16.5 6.5 16.5 6.5C16.5 5.5 17.5 5.5 17.5 5.5ZM12 7C15.3 7 18 9.7 18 13C18 16.3 15.3 19 12 19C8.7 19 6 16.3 6 13C6 9.7 8.7 7 12 7ZM12 9C9.8 9 8 10.8 8 13C8 15.2 9.8 17 12 17C14.2 17 16 15.2 16 13C16 10.8 14.2 9 12 9Z"/></svg></a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- FLOATING CTA -->
+    <div class="floating-cta" aria-label="Actions rapides">
+        <a href="https://wa.me/33[A REMPLIR]" class="float-btn float-whatsapp" aria-label="Nous contacter sur WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+        <a href="tel:+33[A REMPLIR]" class="float-btn float-phone" aria-label="Appeler l'atelier">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+    </div>
+
+    <script src="js/main.js" defer></script>
 </body>
 </html>
